@@ -16,6 +16,7 @@
 		963ACABE1CAB5C3A00FCD0EF /* MemeMeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963ACABD1CAB5C3A00FCD0EF /* MemeMeUITests.swift */; };
 		96C96B321CB7E24E007AD4A9 /* Meme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C96B311CB7E24E007AD4A9 /* Meme.swift */; };
 		96C96B341CB7EA75007AD4A9 /* PushUpKeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C96B331CB7EA75007AD4A9 /* PushUpKeyboardViewController.swift */; };
+		96C96B361CB7EE6A007AD4A9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C96B351CB7EE6A007AD4A9 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		963ACABF1CAB5C3A00FCD0EF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		96C96B311CB7E24E007AD4A9 /* Meme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Meme.swift; sourceTree = "<group>"; };
 		96C96B331CB7EA75007AD4A9 /* PushUpKeyboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushUpKeyboardViewController.swift; sourceTree = "<group>"; };
+		96C96B351CB7EE6A007AD4A9 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +135,7 @@
 			children = (
 				963ACA9D1CAB5C3A00FCD0EF /* AppDelegate.swift */,
 				96C96B311CB7E24E007AD4A9 /* Meme.swift */,
+				96C96B351CB7EE6A007AD4A9 /* Constants.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -294,6 +297,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				96C96B361CB7EE6A007AD4A9 /* Constants.swift in Sources */,
 				96C96B321CB7E24E007AD4A9 /* Meme.swift in Sources */,
 				963ACAA01CAB5C3A00FCD0EF /* MemeViewController.swift in Sources */,
 				96C96B341CB7EA75007AD4A9 /* PushUpKeyboardViewController.swift in Sources */,

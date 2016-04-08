@@ -17,10 +17,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZCK-ph-L6J">
-                                <rect key="frame" x="190" y="227" width="240" height="128"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZCK-ph-L6J" userLabel="memeImageView">
+                                <rect key="frame" x="0.0" y="44" width="600" height="512"/>
                             </imageView>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rLr-yo-4tg">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Bottom" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VTn-sN-6En" userLabel="bottomMemeText">
+                                <rect key="frame" x="252" y="501" width="97" height="30"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
+                            </textField>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="rLr-yo-4tg">
                                 <rect key="frame" x="0.0" y="556" width="600" height="44"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="lXN-kx-H9w"/>
@@ -30,7 +36,7 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="ZOs-Uk-fjq"/>
                                 </items>
                             </toolbar>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EeH-Zj-8RV">
+                            <navigationBar contentMode="scaleToFill" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="EeH-Zj-8RV">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                 <items>
                                     <navigationItem title="Title" id="sbc-We-9Tr">
@@ -39,12 +45,37 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Top" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KBk-ca-BMO" userLabel="topMemeText">
+                                <rect key="frame" x="252" y="103" width="97" height="30"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="rLr-yo-4tg" firstAttribute="top" secondItem="ZCK-ph-L6J" secondAttribute="bottom" id="28N-kd-DDM"/>
+                            <constraint firstItem="EeH-Zj-8RV" firstAttribute="trailing" secondItem="ZCK-ph-L6J" secondAttribute="trailing" id="7UX-p4-Tg2"/>
+                            <constraint firstAttribute="trailing" secondItem="EeH-Zj-8RV" secondAttribute="trailing" id="8j8-1T-NdD"/>
+                            <constraint firstItem="EeH-Zj-8RV" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="9nr-Lu-1tq"/>
+                            <constraint firstItem="rLr-yo-4tg" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="HHm-7h-Ohb"/>
+                            <constraint firstAttribute="trailing" secondItem="rLr-yo-4tg" secondAttribute="trailing" id="QFA-Xk-CsG"/>
+                            <constraint firstAttribute="trailing" secondItem="ZCK-ph-L6J" secondAttribute="trailing" id="UPZ-dx-kbp"/>
+                            <constraint firstItem="ZCK-ph-L6J" firstAttribute="top" secondItem="EeH-Zj-8RV" secondAttribute="bottom" id="ZWu-6g-10S"/>
+                            <constraint firstItem="ZCK-ph-L6J" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="mR8-kC-NB2"/>
+                            <constraint firstItem="EeH-Zj-8RV" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="nXk-Em-DIj"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="rLr-yo-4tg" secondAttribute="bottom" id="tuU-Ko-hYX"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="7UX-p4-Tg2"/>
+                            </mask>
+                        </variation>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="638" y="603"/>
         </scene>
     </scenes>
 </document>
