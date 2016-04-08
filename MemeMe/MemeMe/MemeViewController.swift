@@ -50,6 +50,19 @@ class MemeViewController: PushUpKeyboardViewController {
 
 extension MemeViewController : UITextFieldDelegate {
     
+    // Clear Default Placeholder Text
+    func textFieldDidBeginEditing(textField: UITextField) {
+        guard let text = textField.text else {
+            return
+        }
+        if textField == topMemeText && text == DefaultText.TopTextFieldText {
+            textField.text = ""
+        } else  if textField == bottomMemeText && text == DefaultText.BottomTextFieldText {
+            textField.text = ""
+        }
+    }
+    
+    // Be able to dismiss keyboard
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
