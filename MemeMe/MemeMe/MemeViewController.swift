@@ -12,6 +12,10 @@ class MemeViewController: UIViewController { //PushUpKeyboardViewController
     
     // MARK: - Properties
     
+    var camera = MemeCamera()
+    
+    var savedMemes = [Meme]()
+    
     var meme: Meme?
     
     var editMode = false
@@ -29,28 +33,32 @@ class MemeViewController: UIViewController { //PushUpKeyboardViewController
     @IBOutlet weak var shareButton: UIBarButtonItem!
     
     @IBOutlet weak var cameraButton: UIBarButtonItem!
+    
+    @IBOutlet weak var imageView: UIImageView!
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         memeTextFieldDelegate = MemeTextFieldDelegate(top: topMemeText, bottom: bottomMemeText)
+        camera.setup(self)
+        camera.imageView = imageView
     }
     
     @IBAction func pickImageFromCamera(sender: AnyObject) {
-        
+        camera.pick(.Camera)
     }
     
     @IBAction func pickImageFromAlbum(sender: AnyObject) {
-        
+        camera.pick(.PhotoLibrary)
     }
     
     @IBAction func shareMeme(sender: AnyObject) {
-        
+        shareNewMeme(generateMemedImage())
     }
     
     @IBAction func cancelEdit(sender: AnyObject) {
-        
+        print("Cancel Button Pressed")
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -64,8 +72,38 @@ class MemeViewController: UIViewController { //PushUpKeyboardViewController
         super.viewWillDisappear(animated)
         unsubscribeFromKeyboardNotifications()
     }
-
- 
+    
+    override func prefersStatusBarHidden() -> Bool {
+        return true
+    }
+    
+    func saveMeme() {
+        // create meme
+        //let meme = Meme(text: textField.text!, image: imageView.image, memebedImage: memedImage)
+        print("Completion of Save Meme")
+    }
+    
+    func shareNewMeme(image: UIImage) {
+        let controller = UIActivityViewController(activityItems: [image], applicationActivities: nil)
+        self.presentViewController(controller, animated: true, completion: saveMeme)
+    }
+    
+    
+    
+    func generateMemedImage() -> UIImage {
+        
+        // TODO" Hide toolbgar and navbar
+        
+        // render view to an image
+        UIGraphicsBeginImageContext(view.frame.size)
+        view.drawViewHierarchyInRect(view.frame, afterScreenUpdates: true)
+        let memedImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        // TODO: Show toolbar and navbar
+        
+        return memedImage
+    }
 }
 
 // MARK: - UI
@@ -74,7 +112,7 @@ extension MemeViewController {
     // MARK: SETUP
     
     private func setupButtons() {
-        cameraButton.enabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)
+        cameraButton.enabled = UIImagePickerController.isSourceTypeAvailable(.Camera)
         shareButton.enabled = false
         cancelEditButton.enabled = false
     }
@@ -102,66 +140,6 @@ extension MemeViewController {
         for textfield in textfields {
             textfield.defaultTextAttributes = memeMeTextAttributes
         }
-    }
-    
-}
-
-//extension MemeViewController : UITextFieldDelegate {
-//    
-//    // Clear Default Placeholder Text
-//    func textFieldDidBeginEditing(textField: UITextField) {
-//        guard let text = textField.text else {
-//            return
-//        }
-//        if textField == topMemeText && text == DefaultText.TopTextFieldText {
-//            textField.text = ""
-//        } else  if textField == bottomMemeText && text == DefaultText.BottomTextFieldText {
-//            textField.text = ""
-//        }
-//    }
-//    
-//    // Be able to dismiss keyboard
-//    func textFieldShouldReturn(textField: UITextField) -> Bool {
-//        textField.resignFirstResponder()
-//        return true
-//    }
-//    
-//    
-//}
-
-//import UIKit.UITextField
-
-class MemeTextFieldDelegate : NSObject , UITextFieldDelegate {
-    
-    var top: UITextField
-    var bottom: UITextField
-    
-    init(top: UITextField, bottom: UITextField) {
-        self.top = top
-        self.bottom = bottom
-        
-        super.init()
-        
-        bottom.delegate = self
-        top.delegate = self
-    }
-    
-    // Clear Default Placeholder Text
-    func textFieldDidBeginEditing(textField: UITextField) {
-        guard let text = textField.text else {
-            return
-        }
-        if textField == top && text == DefaultText.TopTextFieldText {
-            textField.text = ""
-        } else  if textField == bottom && text == DefaultText.BottomTextFieldText {
-            textField.text = ""
-        }
-    }
-    
-    // Be able to dismiss keyboard
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
     }
 }
 
@@ -199,10 +177,4 @@ extension MemeViewController {
         }
         return keyboardSize.CGRectValue().height
     }
-}
-
-extension MemeViewController : UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    
-    
-    
 }

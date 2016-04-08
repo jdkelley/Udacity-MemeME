@@ -17,6 +17,8 @@
 		96C96B321CB7E24E007AD4A9 /* Meme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C96B311CB7E24E007AD4A9 /* Meme.swift */; };
 		96C96B341CB7EA75007AD4A9 /* PushUpKeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C96B331CB7EA75007AD4A9 /* PushUpKeyboardViewController.swift */; };
 		96C96B361CB7EE6A007AD4A9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C96B351CB7EE6A007AD4A9 /* Constants.swift */; };
+		96C96B381CB82AD3007AD4A9 /* MemeTextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C96B371CB82AD3007AD4A9 /* MemeTextFieldDelegate.swift */; };
+		96C96B3A1CB8339F007AD4A9 /* MemeCamera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C96B391CB8339F007AD4A9 /* MemeCamera.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +55,8 @@
 		96C96B311CB7E24E007AD4A9 /* Meme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Meme.swift; sourceTree = "<group>"; };
 		96C96B331CB7EA75007AD4A9 /* PushUpKeyboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushUpKeyboardViewController.swift; sourceTree = "<group>"; };
 		96C96B351CB7EE6A007AD4A9 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		96C96B371CB82AD3007AD4A9 /* MemeTextFieldDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemeTextFieldDelegate.swift; sourceTree = "<group>"; };
+		96C96B391CB8339F007AD4A9 /* MemeCamera.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemeCamera.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +149,7 @@
 			children = (
 				963ACAA11CAB5C3A00FCD0EF /* Main.storyboard */,
 				963ACAA61CAB5C3A00FCD0EF /* LaunchScreen.storyboard */,
+				96C96B371CB82AD3007AD4A9 /* MemeTextFieldDelegate.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -154,6 +159,7 @@
 			children = (
 				963ACA9F1CAB5C3A00FCD0EF /* MemeViewController.swift */,
 				96C96B331CB7EA75007AD4A9 /* PushUpKeyboardViewController.swift */,
+				96C96B391CB8339F007AD4A9 /* MemeCamera.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -298,9 +304,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				96C96B361CB7EE6A007AD4A9 /* Constants.swift in Sources */,
+				96C96B3A1CB8339F007AD4A9 /* MemeCamera.swift in Sources */,
 				96C96B321CB7E24E007AD4A9 /* Meme.swift in Sources */,
 				963ACAA01CAB5C3A00FCD0EF /* MemeViewController.swift in Sources */,
 				96C96B341CB7EA75007AD4A9 /* PushUpKeyboardViewController.swift in Sources */,
+				96C96B381CB82AD3007AD4A9 /* MemeTextFieldDelegate.swift in Sources */,
 				963ACA9E1CAB5C3A00FCD0EF /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
