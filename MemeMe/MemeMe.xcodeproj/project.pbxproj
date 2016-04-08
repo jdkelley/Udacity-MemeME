@@ -97,12 +97,11 @@
 		963ACA9C1CAB5C3A00FCD0EF /* MemeMe */ = {
 			isa = PBXGroup;
 			children = (
-				963ACA9D1CAB5C3A00FCD0EF /* AppDelegate.swift */,
-				963ACA9F1CAB5C3A00FCD0EF /* ViewController.swift */,
-				963ACAA11CAB5C3A00FCD0EF /* Main.storyboard */,
+				96C96B301CB7E0AA007AD4A9 /* Supporting Files */,
+				96C96B2F1CB7E0A3007AD4A9 /* Controller */,
+				96C96B2E1CB7E09F007AD4A9 /* View */,
+				96C96B2D1CB7E080007AD4A9 /* Model */,
 				963ACAA41CAB5C3A00FCD0EF /* Assets.xcassets */,
-				963ACAA61CAB5C3A00FCD0EF /* LaunchScreen.storyboard */,
-				963ACAA91CAB5C3A00FCD0EF /* Info.plist */,
 			);
 			path = MemeMe;
 			sourceTree = "<group>";
@@ -123,6 +122,39 @@
 				963ACABF1CAB5C3A00FCD0EF /* Info.plist */,
 			);
 			path = MemeMeUITests;
+			sourceTree = "<group>";
+		};
+		96C96B2D1CB7E080007AD4A9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				963ACA9D1CAB5C3A00FCD0EF /* AppDelegate.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		96C96B2E1CB7E09F007AD4A9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				963ACAA11CAB5C3A00FCD0EF /* Main.storyboard */,
+				963ACAA61CAB5C3A00FCD0EF /* LaunchScreen.storyboard */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		96C96B2F1CB7E0A3007AD4A9 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				963ACA9F1CAB5C3A00FCD0EF /* ViewController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		96C96B301CB7E0AA007AD4A9 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				963ACAA91CAB5C3A00FCD0EF /* Info.plist */,
+			);
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -484,6 +516,7 @@
 				963ACAC41CAB5C3A00FCD0EF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		963ACAC51CAB5C3A00FCD0EF /* Build configuration list for PBXNativeTarget "MemeMeTests" */ = {
 			isa = XCConfigurationList;
@@ -492,6 +525,7 @@
 				963ACAC71CAB5C3A00FCD0EF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		963ACAC81CAB5C3A00FCD0EF /* Build configuration list for PBXNativeTarget "MemeMeUITests" */ = {
 			isa = XCConfigurationList;
@@ -500,6 +534,7 @@
 				963ACACA1CAB5C3A00FCD0EF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
