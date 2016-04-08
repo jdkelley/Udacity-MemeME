@@ -36,11 +36,11 @@ class PushUpKeyboardViewController : UIViewController {
     // MARK: - Custom Methods
     
     func keyboardWillShow(notification: NSNotification) {
-        view.frame.origin.y -= getKeyBoardHeight(notification)
+        view.frame.origin.y += getKeyBoardHeight(notification)
     }
     
     func keyboardWillHide(notification: NSNotification) {
-        view.frame.origin.y += getKeyBoardHeight(notification)
+        view.frame.origin.y -= getKeyBoardHeight(notification)
     }
     
     func getKeyBoardHeight(notification: NSNotification) -> CGFloat {
