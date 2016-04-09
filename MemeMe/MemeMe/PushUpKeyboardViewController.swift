@@ -8,6 +8,12 @@
 
 import UIKit
 
+/**
+ In order to get all the push up keyboard functionality, simply extend
+ this VC with your VC and make sure that you set the delegate on any
+ text fields that you want to have the pushupkeyboard functionality
+ equal to self (your VC, that is).
+ */
 class PushUpKeyboardViewController : UIViewController {
     
     // MARK: - Properties
@@ -30,7 +36,7 @@ class PushUpKeyboardViewController : UIViewController {
         unsubscribeFromKeyboardNotifications()
     }
     
-    /// When you touch off the keyboard, dismiss keyboard
+    // When you touch off the keyboard, dismiss keyboard
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         self.view.endEditing(true)
     }
@@ -55,7 +61,7 @@ class PushUpKeyboardViewController : UIViewController {
     func keyboardWillShow(notification: NSNotification) {
         let height = getKeyBoardHeight(notification)
         
-        if !keyboardIsRaised  && bottomOfActiveTextField(height) > view.frame.height - height {
+        if !keyboardIsRaised  && bottomOfActiveTextField(height) > (view.frame.height - height) {
             self.view.frame.origin.y -= height
             keyboardIsRaised = true
         }
@@ -88,7 +94,13 @@ class PushUpKeyboardViewController : UIViewController {
     }
 }
 
+// MARK: - Specific UITextFieldDelegate Methods
+
 extension PushUpKeyboardViewController : UITextFieldDelegate {
+    
+    func textFieldDidBeginEditing(textField: UITextField) {
+        activeTextField = textField
+    }
     
     // Be able to dismiss keyboard
     func textFieldShouldReturn(textField: UITextField) -> Bool {

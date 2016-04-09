@@ -107,9 +107,7 @@
 			children = (
 				96C96B301CB7E0AA007AD4A9 /* Supporting Files */,
 				96C96B2F1CB7E0A3007AD4A9 /* Controller */,
-				96C96B2E1CB7E09F007AD4A9 /* View */,
 				96C96B2D1CB7E080007AD4A9 /* Model */,
-				963ACAA41CAB5C3A00FCD0EF /* Assets.xcassets */,
 			);
 			path = MemeMe;
 			sourceTree = "<group>";
@@ -145,6 +143,7 @@
 		96C96B2E1CB7E09F007AD4A9 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				963ACAA41CAB5C3A00FCD0EF /* Assets.xcassets */,
 				963ACAA11CAB5C3A00FCD0EF /* Main.storyboard */,
 				963ACAA61CAB5C3A00FCD0EF /* LaunchScreen.storyboard */,
 			);
@@ -157,6 +156,7 @@
 				963ACA9F1CAB5C3A00FCD0EF /* MemeViewController.swift */,
 				96C96B331CB7EA75007AD4A9 /* PushUpKeyboardViewController.swift */,
 				96C96B391CB8339F007AD4A9 /* MemeCamera.swift */,
+				96C96B2E1CB7E09F007AD4A9 /* View */,
 			);
 			name = Controller;
 			sourceTree = "<group>";

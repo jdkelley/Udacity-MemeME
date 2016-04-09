@@ -12,10 +12,12 @@ class MemeCamera : UIViewController, UIImagePickerControllerDelegate, UINavigati
     
     var imageView: UIImageView?
     
+    /// Setup the Camera (which is a VC) by adding it as a child under the presenting VC.
     func setup(vc: UIViewController) {
         vc.addChildViewController(self)
     }
     
+    /// Pick a picture from `source`.
     func pick(source: UIImagePickerControllerSourceType) {
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
@@ -23,6 +25,7 @@ class MemeCamera : UIViewController, UIImagePickerControllerDelegate, UINavigati
         presentViewController(imagePicker, animated: true, completion: nil)
     }
     
+    /// UIImagePickerControllerDelegate delegate method.
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             imageView?.image = image

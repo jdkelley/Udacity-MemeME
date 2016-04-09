@@ -6,8 +6,7 @@
 //  Copyright © 2016 Joshua Kelley. All rights reserved.
 //
 
-import Foundation
-
+/// Default Text in MemeMe
 struct DefaultText {
     
     static let TopTextFieldText = "TOP"

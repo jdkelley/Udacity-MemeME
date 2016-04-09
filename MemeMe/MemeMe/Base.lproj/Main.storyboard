@@ -35,23 +35,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                             </textField>
-                            <navigationBar contentMode="scaleToFill" horizontalCompressionResistancePriority="752" verticalCompressionResistancePriority="752" translatesAutoresizingMaskIntoConstraints="NO" id="EeH-Zj-8RV">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
-                                <items>
-                                    <navigationItem id="sbc-We-9Tr">
-                                        <barButtonItem key="leftBarButtonItem" systemItem="action" id="eTI-5h-frM" userLabel="Share Button">
-                                            <connections>
-                                                <action selector="shareMeme:" destination="BYZ-38-t0r" id="ZNX-nb-rhd"/>
-                                            </connections>
-                                        </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="ejj-rW-E6Z" userLabel="Cancel Button">
-                                            <connections>
-                                                <action selector="cancelEdit:" destination="BYZ-38-t0r" id="g9q-zu-fLm"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="rLr-yo-4tg">
                                 <rect key="frame" x="0.0" y="556" width="600" height="44"/>
                                 <items>
@@ -70,8 +53,25 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="ZOs-Uk-fjq"/>
                                 </items>
                             </toolbar>
+                            <navigationBar contentMode="scaleToFill" horizontalCompressionResistancePriority="752" verticalCompressionResistancePriority="752" translatesAutoresizingMaskIntoConstraints="NO" id="EeH-Zj-8RV">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                <items>
+                                    <navigationItem id="sbc-We-9Tr">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="action" id="eTI-5h-frM" userLabel="Share Button">
+                                            <connections>
+                                                <action selector="shareMeme:" destination="BYZ-38-t0r" id="ZNX-nb-rhd"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="ejj-rW-E6Z" userLabel="Cancel Button">
+                                            <connections>
+                                                <action selector="cancelEdit:" destination="BYZ-38-t0r" id="g9q-zu-fLm"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="ZCK-ph-L6J" secondAttribute="bottom" id="2hC-xa-VaJ"/>
                             <constraint firstItem="EeH-Zj-8RV" firstAttribute="trailing" secondItem="ZCK-ph-L6J" secondAttribute="trailing" id="7UX-p4-Tg2"/>
@@ -79,10 +79,10 @@
                             <constraint firstItem="EeH-Zj-8RV" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="9nr-Lu-1tq"/>
                             <constraint firstItem="ZCK-ph-L6J" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="9r1-13-6za"/>
                             <constraint firstItem="rLr-yo-4tg" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="HHm-7h-Ohb"/>
-                            <constraint firstItem="EeH-Zj-8RV" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="MkC-Pk-UmC"/>
                             <constraint firstItem="KBk-ca-BMO" firstAttribute="top" secondItem="ZCK-ph-L6J" secondAttribute="bottom" multiplier="0.15" id="Ol2-ql-sbm"/>
                             <constraint firstAttribute="trailing" secondItem="rLr-yo-4tg" secondAttribute="trailing" id="QFA-Xk-CsG"/>
                             <constraint firstAttribute="trailing" secondItem="ZCK-ph-L6J" secondAttribute="trailing" id="UPZ-dx-kbp"/>
+                            <constraint firstItem="y3c-jy-aDJ" firstAttribute="bottom" secondItem="EeH-Zj-8RV" secondAttribute="top" symbolic="YES" id="WgM-FU-TKo"/>
                             <constraint firstItem="VTn-sN-6En" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="YOU-t7-J6r"/>
                             <constraint firstItem="VTn-sN-6En" firstAttribute="bottom" secondItem="ZCK-ph-L6J" secondAttribute="bottom" multiplier="0.85" id="hGt-Zp-zsc"/>
                             <constraint firstAttribute="trailingMargin" secondItem="VTn-sN-6En" secondAttribute="trailing" constant="20" id="i8Y-Ta-j2t"/>

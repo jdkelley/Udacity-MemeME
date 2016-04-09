@@ -62,14 +62,19 @@ class MemeViewController: PushUpKeyboardViewController {
         shareButton.enabled = (imageView.image != nil) // Enable Share Button?
     }
     
+    override func prefersStatusBarHidden() -> Bool {
+        return true
+    }
+    
     // MARK: - Actions
     
-    ///
     @IBAction func pickImageFromCamera(sender: AnyObject) {
         camera.pick(.Camera)
     }
     
-    @IBAction func pickImageFromAlbum(sender: AnyObject) { camera.pick(.PhotoLibrary) }
+    @IBAction func pickImageFromAlbum(sender: AnyObject) {
+        camera.pick(.PhotoLibrary)
+    }
     
     @IBAction func shareMeme(sender: AnyObject) {
         let memedImage = generateMemedImage()
