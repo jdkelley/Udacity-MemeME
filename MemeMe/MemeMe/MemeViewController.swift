@@ -8,25 +8,24 @@
 
 import UIKit
 
-class MemeViewController: UIViewController { //PushUpKeyboardViewController
+class MemeViewController: PushUpKeyboardViewController {
     
     // MARK: - Properties
     
+    /// This object handles taking a picture.
     var camera = MemeCamera()
     
+    /// List of saved memes. I am assuming we will do something with 
+    /// saved memes in the version 2.0
     var savedMemes = [Meme]()
     
+    /// The working meme. (For now this is where the meme is saved while
+    /// you are sharing it and before it is saved)
     var meme: Meme?
     
-    var editMode = false
-    
-    var keyboardIsRaised = false
-    
-    var memeTextFieldDelegate: MemeTextFieldDelegate?
-    
     // Textfields
-    @IBOutlet weak var topMemeText: UITextField! { didSet {  } }
-    @IBOutlet weak var bottomMemeText: UITextField! { didSet {  } }
+    @IBOutlet weak var topMemeText: UITextField!
+    @IBOutlet weak var bottomMemeText: UITextField!
     
     // buttons
     @IBOutlet weak var cancelEditButton: UIBarButtonItem!
@@ -34,74 +33,86 @@ class MemeViewController: UIViewController { //PushUpKeyboardViewController
     
     @IBOutlet weak var cameraButton: UIBarButtonItem!
     
+    // bars
+    @IBOutlet weak var toolbar: UIToolbar!
+    @IBOutlet weak var navBar: UINavigationBar!
+    
+    // image view
     @IBOutlet weak var imageView: UIImageView!
 
+    // MARK: - View Controller Life Cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        memeTextFieldDelegate = MemeTextFieldDelegate(top: topMemeText, bottom: bottomMemeText)
+        
+        // set delegates
+        bottomMemeText.delegate = self
+        topMemeText.delegate = self
+        
+        // Setup Camera
         camera.setup(self)
         camera.imageView = imageView
-    }
-    
-    @IBAction func pickImageFromCamera(sender: AnyObject) {
-        camera.pick(.Camera)
-    }
-    
-    @IBAction func pickImageFromAlbum(sender: AnyObject) {
-        camera.pick(.PhotoLibrary)
-    }
-    
-    @IBAction func shareMeme(sender: AnyObject) {
-        shareNewMeme(generateMemedImage())
-    }
-    
-    @IBAction func cancelEdit(sender: AnyObject) {
-        print("Cancel Button Pressed")
+        
+        // Set initial UI State
+        setInitialUIState()
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        subscribeToKeyboardNotifications()
-        setupButtons()
-        setupTextFields()
+        shareButton.enabled = (imageView.image != nil) // Enable Share Button?
     }
     
-    override func viewWillDisappear(animated: Bool) {
-        super.viewWillDisappear(animated)
-        unsubscribeFromKeyboardNotifications()
+    // MARK: - Actions
+    
+    ///
+    @IBAction func pickImageFromCamera(sender: AnyObject) {
+        camera.pick(.Camera)
     }
     
-    override func prefersStatusBarHidden() -> Bool {
-        return true
+    @IBAction func pickImageFromAlbum(sender: AnyObject) { camera.pick(.PhotoLibrary) }
+    
+    @IBAction func shareMeme(sender: AnyObject) {
+        let memedImage = generateMemedImage()
+        meme = Meme(topText: topMemeText.text ?? "", bottomText: bottomMemeText.text ?? "", image: imageView.image!, memedImage: memedImage)
+        shareNewMeme(memedImage)
     }
     
+    @IBAction func cancelEdit(sender: AnyObject) {
+        setInitialUIState()
+    }
+    
+    // MARK: - Custom Methods
+    
+    /// Save meme to array of memes and set working meme to nil
     func saveMeme() {
-        // create meme
-        //let meme = Meme(text: textField.text!, image: imageView.image, memebedImage: memedImage)
-        print("Completion of Save Meme")
+        savedMemes.append(meme!)
+        meme = nil
     }
     
+    /// Share the image passed in via Apple's Native social share view controller
+    /// - parameter image: the image to share
     func shareNewMeme(image: UIImage) {
-        let controller = UIActivityViewController(activityItems: [image], applicationActivities: nil)
-        self.presentViewController(controller, animated: true, completion: saveMeme)
+        let activityVC = UIActivityViewController(activityItems: [image], applicationActivities: nil)
+        self.presentViewController(activityVC, animated: true, completion: saveMeme)
     }
     
-    
-    
+    /**
+     Takes the current meme image and text, renders it to an image and passes that image back.
+     - returns: a rendered meme. ( `UIImage`)
+     */
     func generateMemedImage() -> UIImage {
         
-        // TODO" Hide toolbgar and navbar
+        // Hide toolbgar and navbar
+        setToolBarsVisible(false)
         
         // render view to an image
-        UIGraphicsBeginImageContext(view.frame.size)
-        view.drawViewHierarchyInRect(view.frame, afterScreenUpdates: true)
+        UIGraphicsBeginImageContext(imageView.frame.size)
+        view.drawViewHierarchyInRect(imageView.frame, afterScreenUpdates: true)
         let memedImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         
-        // TODO: Show toolbar and navbar
-        
+        // Show toolbar and navbar
+        setToolBarsVisible(true)
         return memedImage
     }
 }
@@ -111,23 +122,25 @@ extension MemeViewController {
     
     // MARK: SETUP
     
-    private func setupButtons() {
+    /// Set the initial UIState of the MemeEditor Screen.
+    private func setInitialUIState() {
         cameraButton.enabled = UIImagePickerController.isSourceTypeAvailable(.Camera)
-        shareButton.enabled = false
-        cancelEditButton.enabled = false
+        setupTextFields()
+        imageView.image = nil
     }
-    
+
+    /// Set up the meme textfields to their initial state
     private func setupTextFields() {
-        
         // set default text
         topMemeText.text = DefaultText.TopTextFieldText
         bottomMemeText.text = DefaultText.BottomTextFieldText
         
         // set textfield attributes
         setTextFieldAttributes(topMemeText, bottomMemeText)
-        
     }
     
+    /// Takes a list of textfields and sets the attributes on them for memes
+    /// - parameter textfields: a list of textfields
     private func setTextFieldAttributes(textfields : UITextField ... ) {
         // textfield attributes
         let memeMeTextAttributes = [
@@ -139,42 +152,14 @@ extension MemeViewController {
     
         for textfield in textfields {
             textfield.defaultTextAttributes = memeMeTextAttributes
-        }
-    }
-}
-
-extension MemeViewController {
-    func subscribeToKeyboardNotifications() {
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MemeViewController.keyboardWillShow(_:)), name: UIKeyboardWillShowNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MemeViewController.keyboardWillHide(_:)), name: UIKeyboardWillHideNotification, object: nil)
-    }
-    
-    func unsubscribeFromKeyboardNotifications() {
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillShowNotification, object: nil)
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillHideNotification, object: nil)
-    }
-    
-    // MARK: - Custom Methods
-    
-    func keyboardWillShow(notification: NSNotification) {
-        if !keyboardIsRaised {
-            self.view.frame.origin.y -= getKeyBoardHeight(notification) //
-            keyboardIsRaised = true
+            textfield.textAlignment = NSTextAlignment.Center
         }
     }
     
-    func keyboardWillHide(notification: NSNotification) {
-        if keyboardIsRaised {
-            self.view.frame.origin.y += getKeyBoardHeight(notification)
-            keyboardIsRaised = false
-        }
-    }
-    
-    func getKeyBoardHeight(notification: NSNotification) -> CGFloat {
-        let userInfo = notification.userInfo
-        guard let keyboardSize = userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue else { // of CGRect
-            return 0.0
-        }
-        return keyboardSize.CGRectValue().height
+    /// This methods sets the toolbars as visible or not based on the parameter `visible`
+    /// - parameter visible: Set the toolbars visible?
+    private func setToolBarsVisible(visible: Bool) {
+        toolbar.alpha = visible ? 1.0 : 0.0
+        navBar.alpha = visible ? 1.0 : 0.0
     }
 }
