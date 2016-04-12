@@ -90,7 +90,7 @@ class MemeViewController: PushUpKeyboardViewController {
     
     /// Save meme to array of memes and set working meme to nil
     func saveMeme() {
-        savedMemes.append(meme!)
+        (UIApplication.sharedApplication().delegate as! AppDelegate).memes.append(meme!)
         meme = nil
     }
     
