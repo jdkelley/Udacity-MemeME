@@ -13,7 +13,7 @@ class MemeCamera : UIViewController, UIImagePickerControllerDelegate, UINavigati
     var imageView: UIImageView?
     
     /// Setup the Camera (which is a VC) by adding it as a child under the presenting VC.
-    func setup(vc: UIViewController) {
+    func setupWith(vc: UIViewController) {
         vc.addChildViewController(self)
     }
     

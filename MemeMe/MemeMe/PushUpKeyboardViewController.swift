@@ -86,7 +86,6 @@ class PushUpKeyboardViewController : UIViewController {
     
     func bottomOfActiveTextField(keyboardHeight: CGFloat) -> CGFloat {
         guard let textfield = activeTextField else {
-            print("al;sdf;akjs")
             return 0.0
             
         }

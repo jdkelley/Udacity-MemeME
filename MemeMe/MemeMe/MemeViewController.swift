@@ -50,7 +50,7 @@ class MemeViewController: PushUpKeyboardViewController {
         topMemeText.delegate = self
         
         // Setup Camera
-        camera.setup(self)
+        camera.setupWith(self)
         camera.imageView = imageView
         
         // Set initial UI State
@@ -59,7 +59,7 @@ class MemeViewController: PushUpKeyboardViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        shareButton.enabled = (imageView.image != nil) // Enable Share Button?
+        setShareUI()
     }
     
     override func prefersStatusBarHidden() -> Bool {
@@ -97,8 +97,18 @@ class MemeViewController: PushUpKeyboardViewController {
     /// Share the image passed in via Apple's Native social share view controller
     /// - parameter image: the image to share
     func shareNewMeme(image: UIImage) {
+        
         let activityVC = UIActivityViewController(activityItems: [image], applicationActivities: nil)
-        self.presentViewController(activityVC, animated: true, completion: saveMeme)
+        
+        activityVC.completionWithItemsHandler = { activity, success, items, error in
+            if success {
+                self.saveMeme()
+                self.setShareUI()
+            }
+        }
+        
+        self.presentViewController(activityVC, animated: true, completion: nil)
+        
     }
     
     /**
@@ -126,6 +136,10 @@ class MemeViewController: PushUpKeyboardViewController {
 extension MemeViewController {
     
     // MARK: SETUP
+    
+    func setShareUI() {
+        shareButton.enabled = (imageView.image != nil) // Enable Share Button?
+    }
     
     /// Set the initial UIState of the MemeEditor Screen.
     private func setInitialUIState() {
