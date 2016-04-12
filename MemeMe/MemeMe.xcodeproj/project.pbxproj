@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9619ED371CBD779F00BEDC65 /* TODO.txt in Resources */ = {isa = PBXBuildFile; fileRef = 9619ED361CBD779F00BEDC65 /* TODO.txt */; };
 		963ACA9E1CAB5C3A00FCD0EF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963ACA9D1CAB5C3A00FCD0EF /* AppDelegate.swift */; };
 		963ACAA01CAB5C3A00FCD0EF /* MemeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963ACA9F1CAB5C3A00FCD0EF /* MemeViewController.swift */; };
 		963ACAA31CAB5C3A00FCD0EF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 963ACAA11CAB5C3A00FCD0EF /* Main.storyboard */; };
@@ -38,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9619ED361CBD779F00BEDC65 /* TODO.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TODO.txt; sourceTree = "<group>"; };
 		963ACA9A1CAB5C3A00FCD0EF /* MemeMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MemeMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		963ACA9D1CAB5C3A00FCD0EF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		963ACA9F1CAB5C3A00FCD0EF /* MemeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeViewController.swift; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 				96C96B301CB7E0AA007AD4A9 /* Supporting Files */,
 				96C96B2F1CB7E0A3007AD4A9 /* Controller */,
 				96C96B2D1CB7E080007AD4A9 /* Model */,
+				9619ED361CBD779F00BEDC65 /* TODO.txt */,
 			);
 			path = MemeMe;
 			sourceTree = "<group>";
@@ -273,6 +276,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9619ED371CBD779F00BEDC65 /* TODO.txt in Resources */,
 				963ACAA81CAB5C3A00FCD0EF /* LaunchScreen.storyboard in Resources */,
 				963ACAA51CAB5C3A00FCD0EF /* Assets.xcassets in Resources */,
 				963ACAA31CAB5C3A00FCD0EF /* Main.storyboard in Resources */,
