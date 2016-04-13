@@ -18,6 +18,18 @@ class MemesCollectionViewController: UICollectionViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+    }
+    
+}
 
+// MARK: - UICollectionViewDelegate
+
+extension MemesCollectionViewController {
+    
+    override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        let vc = storyboard?.instantiateViewControllerWithIdentifier(Storyboard.IDs.DisplayMeme) as! DisplayMemeViewController
+        vc.imageView.image = memes[indexPath.row].memedImage
+        navigationController?.pushViewController(vc, animated: true)
     }
 }

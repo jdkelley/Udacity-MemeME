@@ -29,13 +29,7 @@ class MemeDataSource : NSObject {
     
 }
 
-extension MemeDataSource : UITableViewDelegate {
-    
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        return
-    }
-    
-}
+// MARK: - TableView Protocol Conformance
 
 extension MemeDataSource : UITableViewDataSource {
     
@@ -44,27 +38,26 @@ extension MemeDataSource : UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return memes.count
     }
     
 }
 
-extension MemeDataSource : UICollectionViewDelegate {
-    
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        return
-    }
-    
-}
+// MARK: - CollectionView Protocol Conformance
 
 extension MemeDataSource : UICollectionViewDataSource {
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        return UICollectionViewCell()
+        
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(ReuseIdentifier.CollectionViewCell, forIndexPath: indexPath) as! MemeCollectionViewCell
+        let meme = memes[indexPath.row]
+        
+        cell.image = UIImageView(image: meme.memedImage)
+        
+        return cell
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 0
+        return memes.count
     }
-    
 }

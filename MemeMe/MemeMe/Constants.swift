@@ -17,6 +17,20 @@ struct DefaultText {
 
 struct ReuseIdentifier {
     
+    static let TableViewCell = "TableViewCell"
     
+    static let CollectionViewCell = "CollectionViewCell"
+    
+}
+
+struct Storyboard {
+    
+    static let Main = "Main"
+    
+    struct IDs {
+        
+        static let DisplayMeme = "DisplayMeme"
+        
+    }
     
 }
