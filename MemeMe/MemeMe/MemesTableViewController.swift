@@ -10,12 +10,16 @@ import UIKit
 
 class MemesTableViewController: UIViewController {
     
+    @IBOutlet weak var tableView: UITableView!
+    
     var memes: [Meme] {
         return MemeDataSource.sharedInstance.memes
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.delegate = self
+        tableView.dataSource = MemeDataSource.sharedInstance
 
     }
 }
@@ -25,7 +29,7 @@ class MemesTableViewController: UIViewController {
 extension MemesTableViewController : UITableViewDelegate {
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let vc = storyboard?.instantiateViewControllerWithIdentifier(Storyboard.IDs.DisplayMeme) as! DisplayMemeViewController
+        let vc = storyboard?.instantiateViewControllerWithIdentifier(Storyboard.ID.DisplayMemeViewController) as! DisplayMemeViewController
         vc.imageView.image = memes[indexPath.row].memedImage
         navigationController?.pushViewController(vc, animated: true)
     }

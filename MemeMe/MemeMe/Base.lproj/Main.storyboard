@@ -43,7 +43,7 @@
                                         <rect key="frame" x="0.0" y="92" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="neT-Bk-8x6" id="bYO-5m-Sdr">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -59,6 +59,9 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="table" id="deV-hg-P0z"/>
+                    <connections>
+                        <outlet property="tableView" destination="CqK-3s-2HE" id="GBE-rC-wmk"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dH5-0Q-Dce" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -88,7 +91,7 @@
         <!--Display Meme View Controller-->
         <scene sceneID="poU-XF-6cp">
             <objects>
-                <viewController storyboardIdentifier="DisplayMeme" id="Ii0-YC-OR3" customClass="DisplayMemeViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DisplayMemeViewController" id="Ii0-YC-OR3" customClass="DisplayMemeViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="4B8-OE-caL"/>
                         <viewControllerLayoutGuide type="bottom" id="FrV-xt-Ams"/>
@@ -117,10 +120,10 @@
             </objects>
             <point key="canvasLocation" x="-205" y="431"/>
         </scene>
-        <!--Meme View Controller-->
+        <!--Meme Editor View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="MemeViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MemeEditorViewController" id="BYZ-38-t0r" customClass="MemeEditorViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -247,12 +250,11 @@
                                 </view>
                             </collectionViewCell>
                         </cells>
-                        <connections>
-                            <outlet property="dataSource" destination="2A4-Ht-ldA" id="JdM-ON-KI8"/>
-                            <outlet property="delegate" destination="2A4-Ht-ldA" id="48I-qS-UoV"/>
-                        </connections>
                     </collectionView>
                     <tabBarItem key="tabBarItem" title="" image="collection" id="R3m-7T-VFQ"/>
+                    <connections>
+                        <outlet property="flowLayout" destination="7RC-Tt-UQd" id="8Ec-Af-CAQ"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zrP-OG-w1e" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

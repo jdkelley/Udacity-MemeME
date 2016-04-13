@@ -27,10 +27,11 @@ struct Storyboard {
     
     static let Main = "Main"
     
-    struct IDs {
+    struct ID {
         
-        static let DisplayMeme = "DisplayMeme"
+        static let DisplayMemeViewController = "DisplayMemeViewController"
+        
+        static let MemeEditorViewController = "MemeEditorViewController"
         
     }
-    
 }

@@ -1,5 +1,5 @@
 //
-//  MemeViewController.swift
+//  MemeEditorViewController.swift
 //  MemeMe
 //
 //  Created by Joshua Kelley on 3/29/16.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MemeViewController: PushUpKeyboardViewController {
+class MemeEditorViewController: PushUpKeyboardViewController {
     
     // MARK: - Properties
     
@@ -126,7 +126,7 @@ class MemeViewController: PushUpKeyboardViewController {
 }
 
 // MARK: - UI
-extension MemeViewController {
+extension MemeEditorViewController {
     
     // MARK: SETUP
     

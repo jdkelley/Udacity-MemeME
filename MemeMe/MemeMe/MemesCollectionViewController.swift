@@ -18,6 +18,22 @@ class MemesCollectionViewController: UICollectionViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        collectionView?.delegate = self
+        collectionView?.dataSource = MemeDataSource.sharedInstance
+        
+        setupCollectionFlow()
+    }
+    
+    private func setupCollectionFlow() {
+        
+        // TODO: User both width and height
+        
+        let space: CGFloat = 3.0
+        let dimension = (self.view.frame.size.width - (2 * space)) / 3.0
+        
+        flowLayout.minimumInteritemSpacing = space
+        flowLayout.minimumLineSpacing = space
+        flowLayout.itemSize = CGSizeMake(dimension, dimension)
         
     }
     
@@ -25,10 +41,10 @@ class MemesCollectionViewController: UICollectionViewController {
 
 // MARK: - UICollectionViewDelegate
 
-extension MemesCollectionViewController {
+extension MemesCollectionViewController : UICollectionViewDelegateFlowLayout {
     
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        let vc = storyboard?.instantiateViewControllerWithIdentifier(Storyboard.IDs.DisplayMeme) as! DisplayMemeViewController
+        let vc = storyboard?.instantiateViewControllerWithIdentifier(Storyboard.ID.DisplayMemeViewController) as! DisplayMemeViewController
         vc.imageView.image = memes[indexPath.row].memedImage
         navigationController?.pushViewController(vc, animated: true)
     }
