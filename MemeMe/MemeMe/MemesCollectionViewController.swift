@@ -13,10 +13,7 @@ class MemesCollectionViewController: UICollectionViewController {
     @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
     
     var memes: [Meme] {
-        guard let appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate else {
-            return [Meme]()
-        }
-        return appDelegate.memes
+        return MemeDataSource.sharedInstance.memes
     }
 
     override func viewDidLoad() {
