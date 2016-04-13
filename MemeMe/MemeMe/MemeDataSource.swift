@@ -27,6 +27,9 @@ class MemeDataSource : NSObject {
 
 extension MemeDataSource : UITableViewDelegate {
     
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        return
+    }
     
 }
 
@@ -44,6 +47,9 @@ extension MemeDataSource : UITableViewDataSource {
 
 extension MemeDataSource : UICollectionViewDelegate {
     
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        return
+    }
     
 }
 

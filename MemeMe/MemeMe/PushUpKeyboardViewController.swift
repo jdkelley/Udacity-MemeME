@@ -9,8 +9,14 @@
 import UIKit
 
 /**
+ `PushUpKeyboardViewController` extends `UIViewController` and implements
+    - Touch off keyboard dismissal
+    - Return Key Dismissal
+    - Raising the view when a selected UITextField will be covered by the 
+ keyboard so the view is still visible.
+ 
  In order to get all the push up keyboard functionality, simply extend
- this VC with your VC and make sure that you set the delegate on any
+ this `PushUpKeyboardViewController` with your VC and make sure that you set the delegate on any
  text fields that you want to have the pushupkeyboard functionality
  equal to self (your VC, that is).
  */

@@ -14,3 +14,9 @@ struct DefaultText {
     static let BottomTextFieldText = "BOTTOM"
     
 }
+
+struct ReuseIdentifier {
+    
+    
+    
+}
