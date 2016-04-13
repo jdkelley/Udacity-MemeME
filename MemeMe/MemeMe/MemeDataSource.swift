@@ -22,6 +22,10 @@ class MemeDataSource : NSObject {
     
     var memes = [Meme]()
     
+    func saveMeme(meme: Meme) {
+        memes.append(meme)
+    }
+    
     
 }
 

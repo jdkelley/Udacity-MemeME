@@ -64,11 +64,13 @@
             </objects>
             <point key="canvasLocation" x="-1164" y="1216"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Sent Memes-->
         <scene sceneID="I7s-1s-ND1">
             <objects>
                 <tabBarController id="9HW-Co-lch" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="kH8-yG-lPo"/>
+                    <navigationItem key="navigationItem" title="Sent Memes" id="kH8-yG-lPo">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="JlM-OA-ady"/>
+                    </navigationItem>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="kio-a4-ec6">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -82,6 +84,35 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4vO-HN-KLM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-843" y="431"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="poU-XF-6cp">
+            <objects>
+                <viewController id="Ii0-YC-OR3" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="4B8-OE-caL"/>
+                        <viewControllerLayoutGuide type="bottom" id="FrV-xt-Ams"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="xR8-us-LIA">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LnK-8F-Ecp">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="LnK-8F-Ecp" firstAttribute="leading" secondItem="xR8-us-LIA" secondAttribute="leading" id="2ob-KE-EC0"/>
+                            <constraint firstItem="LnK-8F-Ecp" firstAttribute="top" secondItem="xR8-us-LIA" secondAttribute="top" id="T9N-BV-1hR"/>
+                            <constraint firstAttribute="trailing" secondItem="LnK-8F-Ecp" secondAttribute="trailing" id="p5z-Zm-uJI"/>
+                            <constraint firstItem="FrV-xt-Ams" firstAttribute="top" secondItem="LnK-8F-Ecp" secondAttribute="bottom" id="xei-rg-uCg"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1PR-rq-bCb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-205" y="431"/>
         </scene>
         <!--Meme View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -187,7 +218,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-117" y="431"/>
+            <point key="canvasLocation" x="432" y="431"/>
         </scene>
         <!--Collection View Controller-->
         <scene sceneID="vEa-HJ-7nP">

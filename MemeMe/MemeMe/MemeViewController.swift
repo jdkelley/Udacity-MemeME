@@ -77,9 +77,8 @@ class MemeViewController: PushUpKeyboardViewController {
     }
     
     @IBAction func shareMeme(sender: AnyObject) {
-        let memedImage = generateMemedImage()
-        meme = Meme(topText: topMemeText.text ?? "", bottomText: bottomMemeText.text ?? "", image: imageView.image!, memedImage: memedImage)
-        shareNewMeme(memedImage)
+        meme = Meme(topText: topMemeText.text ?? "", bottomText: bottomMemeText.text ?? "", image: imageView.image!, memedImage: generateMemedImage())
+        shareNewMeme(meme!)
     }
     
     @IBAction func cancelEdit(sender: AnyObject) {
@@ -88,21 +87,15 @@ class MemeViewController: PushUpKeyboardViewController {
     
     // MARK: - Custom Methods
     
-    /// Save meme to array of memes and set working meme to nil
-    func saveMeme() {
-        MemeDataSource.sharedInstance.memes.append(meme!)
-        meme = nil
-    }
-    
-    /// Share the image passed in via Apple's Native social share view controller
-    /// - parameter image: the image to share
-    func shareNewMeme(image: UIImage) {
+    /// Share the meme image passed in via Apple's Native social share view controller
+    /// - parameter meme: the meme to share
+    func shareNewMeme(meme: Meme) {
         
-        let activityVC = UIActivityViewController(activityItems: [image], applicationActivities: nil)
+        let activityVC = UIActivityViewController(activityItems: [meme.image], applicationActivities: nil)
         
         activityVC.completionWithItemsHandler = { activity, success, items, error in
             if success {
-                self.saveMeme()
+                MemeDataSource.sharedInstance.saveMeme(meme)
                 self.setShareUI()
             }
         }
