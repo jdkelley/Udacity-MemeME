@@ -61,7 +61,7 @@ extension MemesCollectionViewController : UICollectionViewDelegateFlowLayout{
 // MARK: - UICollectionViewDelegate
 
 extension MemesCollectionViewController {
-    
+
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         if let vc = storyboard?.instantiateViewControllerWithIdentifier(Storyboard.ID.DisplayMemeViewController) as? DisplayMemeViewController {
             vc.setMeme(memes[indexPath.row])
