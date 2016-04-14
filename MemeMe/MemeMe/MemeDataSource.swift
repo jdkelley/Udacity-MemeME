@@ -38,6 +38,7 @@ extension MemeDataSource : UITableViewDataSource {
         let meme = memes[indexPath.row]
         
         cell.imageView?.image = meme.memedImage
+//        cell.imageView?.frame.size = CGSizeMake(100, 80)
         cell.textLabel?.text = meme.topText + "..." + meme.bottomText
         
         return cell
@@ -45,8 +46,7 @@ extension MemeDataSource : UITableViewDataSource {
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return memes.count
-    }
-    
+    }    
 }
 
 // MARK: - CollectionView Protocol Conformance

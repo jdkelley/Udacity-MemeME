@@ -39,4 +39,8 @@ extension MemesTableViewController : UITableViewDelegate {
             navigationController?.pushViewController(vc, animated: true)
         }
     }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 80
+    }
 }
