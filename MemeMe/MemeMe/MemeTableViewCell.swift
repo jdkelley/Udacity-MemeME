@@ -10,8 +10,8 @@ import UIKit
 
 class MemeTableViewCell: UITableViewCell {
     
-//    @IBOutlet weak var memeImage: UIImageView!
-//    @IBOutlet weak var label: UILabel!
+    @IBOutlet weak var topText: UILabel!
+    @IBOutlet weak var bottomText: UILabel!
 
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

@@ -20,8 +20,7 @@ class TabBarViewController: UITabBarController {
 
     @IBAction func newMeme(sender: AnyObject) {
         if let editor = storyboard?.instantiateViewControllerWithIdentifier(Storyboard.ID.MemeEditorViewController) as? MemeEditorViewController {
-            presentViewController(editor, animated: true, completion: nil)
+            navigationController?.pushViewController(editor, animated: true)
         }
     }
-    
 }

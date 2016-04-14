@@ -33,9 +33,10 @@ class MemeEditorViewController: PushUpKeyboardViewController {
     
     @IBOutlet weak var cameraButton: UIBarButtonItem!
     
-    // bars
+    @IBOutlet weak var navbar: UINavigationItem!
+    
+    // bar
     @IBOutlet weak var toolbar: UIToolbar!
-    @IBOutlet weak var navBar: UINavigationBar!
     
     // image view
     @IBOutlet weak var imageView: UIImageView!
@@ -83,8 +84,7 @@ class MemeEditorViewController: PushUpKeyboardViewController {
     
     @IBAction func cancelEdit(sender: AnyObject) {
         setInitialUIState()
-        dismissViewControllerAnimated(true, completion: nil)
-        
+        navigationController?.popToRootViewControllerAnimated(true)
     }
     
     // MARK: - Custom Methods
@@ -98,7 +98,7 @@ class MemeEditorViewController: PushUpKeyboardViewController {
         activityVC.completionWithItemsHandler = { activity, success, items, error in
             if success {
                 MemeDataSource.sharedInstance.saveMeme(meme)
-                self.dismissViewControllerAnimated(true, completion:  nil)
+                self.navigationController?.popToRootViewControllerAnimated(true)
             }
         }
         self.presentViewController(activityVC, animated: true, completion: nil)
@@ -125,10 +125,8 @@ class MemeEditorViewController: PushUpKeyboardViewController {
     }
 }
 
-// MARK: - UI
+// MARK: - UI : Private because only this View Controller should be able to edit its views
 extension MemeEditorViewController {
-    
-    // MARK: SETUP
     
     private func setShareUI() {
         shareButton.enabled = (imageView.image != nil) // Enable Share Button?
@@ -171,7 +169,8 @@ extension MemeEditorViewController {
     /// This methods sets the toolbars as visible or not based on the parameter `visible`
     /// - parameter visible: Set the toolbars visible?
     private func setToolBarsVisible(visible: Bool) {
-        toolbar.alpha = visible ? 1.0 : 0.0
-        navBar.alpha = visible ? 1.0 : 0.0
+        let transparent: CGFloat = visible ? 1.0 : 0.0
+        toolbar.alpha = transparent
+        navigationController?.navigationBar.alpha = transparent
     }
 }

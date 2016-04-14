@@ -20,7 +20,6 @@ class MemesTableViewController: UIViewController {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = MemeDataSource.sharedInstance
-
     }
     
     override func viewWillAppear(animated: Bool) {

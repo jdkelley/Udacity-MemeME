@@ -38,7 +38,6 @@ extension MemeDataSource : UITableViewDataSource {
         let meme = memes[indexPath.row]
         
         cell.imageView?.image = meme.memedImage
-//        cell.imageView?.frame.size = CGSizeMake(100, 80)
         cell.textLabel?.text = meme.topText + "..." + meme.bottomText
         
         return cell
@@ -46,7 +45,21 @@ extension MemeDataSource : UITableViewDataSource {
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return memes.count
-    }    
+    }
+    
+    // MARK: Swipe to delete
+    
+    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == .Delete {
+            memes.removeAtIndex(indexPath.row)
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            
+        }
+    }
 }
 
 // MARK: - CollectionView Protocol Conformance

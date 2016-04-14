@@ -29,15 +29,10 @@ class DisplayMemeViewController: UIViewController {
         imageView.image = meme?.memedImage
     }
     
-    override func viewWillDisappear(animated: Bool) {
-        super.viewWillDisappear(animated)
-        navigationController?.popToRootViewControllerAnimated(true)
-    }
-    
     func editSelected() {
         if let editor = storyboard?.instantiateViewControllerWithIdentifier(Storyboard.ID.MemeEditorViewController) as? MemeEditorViewController {
             editor.meme = meme
-            navigationController?.presentViewController(editor, animated: true, completion: nil)
+            navigationController?.pushViewController(editor, animated: true)
         }
     }
 }

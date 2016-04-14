@@ -21,20 +21,25 @@ class MemesCollectionViewController: UICollectionViewController {
         collectionView?.delegate = self
         collectionView?.dataSource = MemeDataSource.sharedInstance
         
-        setupCollectionFlow()
+        setupCollectionFlow(view.frame.size)
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         collectionView?.reloadData()
     }
+}
+
+// MARK: - Flow Layout
+
+extension MemesCollectionViewController : UICollectionViewDelegateFlowLayout{
     
-    private func setupCollectionFlow() {
+    private func setupCollectionFlow(size: CGSize) {
         
         // TODO: User both width and height
         
         let space: CGFloat = 3.0
-        let dimension = (min(self.view.frame.size.width,self.view.frame.size.width) - (2 * space)) / 3.0
+        let dimension = (min(size.width,size.width) - (2 * space)) / 3.0
         
         flowLayout.minimumInteritemSpacing = space
         flowLayout.minimumLineSpacing = space
@@ -42,11 +47,14 @@ class MemesCollectionViewController: UICollectionViewController {
         
     }
     
+    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+        setupCollectionFlow(size)
+    }
 }
 
 // MARK: - UICollectionViewDelegate
 
-extension MemesCollectionViewController : UICollectionViewDelegateFlowLayout {
+extension MemesCollectionViewController {
     
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         if let vc = storyboard?.instantiateViewControllerWithIdentifier(Storyboard.ID.DisplayMemeViewController) as? DisplayMemeViewController {

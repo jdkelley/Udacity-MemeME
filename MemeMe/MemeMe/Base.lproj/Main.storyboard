@@ -135,7 +135,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1PR-rq-bCb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-205" y="431"/>
+            <point key="canvasLocation" x="-117" y="431"/>
         </scene>
         <!--Meme Editor View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -183,36 +183,15 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="ZOs-Uk-fjq"/>
                                 </items>
                             </toolbar>
-                            <navigationBar contentMode="scaleToFill" horizontalCompressionResistancePriority="752" verticalCompressionResistancePriority="752" translatesAutoresizingMaskIntoConstraints="NO" id="EeH-Zj-8RV">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
-                                <items>
-                                    <navigationItem id="sbc-We-9Tr">
-                                        <barButtonItem key="leftBarButtonItem" systemItem="action" id="eTI-5h-frM" userLabel="Share Button">
-                                            <connections>
-                                                <action selector="shareMeme:" destination="BYZ-38-t0r" id="ZNX-nb-rhd"/>
-                                            </connections>
-                                        </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="ejj-rW-E6Z" userLabel="Cancel Button">
-                                            <connections>
-                                                <action selector="cancelEdit:" destination="BYZ-38-t0r" id="g9q-zu-fLm"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="ZCK-ph-L6J" secondAttribute="bottom" id="2hC-xa-VaJ"/>
-                            <constraint firstItem="EeH-Zj-8RV" firstAttribute="trailing" secondItem="ZCK-ph-L6J" secondAttribute="trailing" id="7UX-p4-Tg2"/>
-                            <constraint firstAttribute="trailing" secondItem="EeH-Zj-8RV" secondAttribute="trailing" id="8j8-1T-NdD"/>
-                            <constraint firstItem="EeH-Zj-8RV" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="9nr-Lu-1tq"/>
-                            <constraint firstItem="ZCK-ph-L6J" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="9r1-13-6za"/>
                             <constraint firstItem="rLr-yo-4tg" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="HHm-7h-Ohb"/>
+                            <constraint firstItem="ZCK-ph-L6J" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Ih8-0j-WrT"/>
                             <constraint firstItem="KBk-ca-BMO" firstAttribute="top" secondItem="ZCK-ph-L6J" secondAttribute="bottom" multiplier="0.15" id="Ol2-ql-sbm"/>
                             <constraint firstAttribute="trailing" secondItem="rLr-yo-4tg" secondAttribute="trailing" id="QFA-Xk-CsG"/>
                             <constraint firstAttribute="trailing" secondItem="ZCK-ph-L6J" secondAttribute="trailing" id="UPZ-dx-kbp"/>
-                            <constraint firstItem="y3c-jy-aDJ" firstAttribute="bottom" secondItem="EeH-Zj-8RV" secondAttribute="top" symbolic="YES" id="WgM-FU-TKo"/>
                             <constraint firstItem="VTn-sN-6En" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="YOU-t7-J6r"/>
                             <constraint firstItem="VTn-sN-6En" firstAttribute="bottom" secondItem="ZCK-ph-L6J" secondAttribute="bottom" multiplier="0.85" id="hGt-Zp-zsc"/>
                             <constraint firstAttribute="trailingMargin" secondItem="VTn-sN-6En" secondAttribute="trailing" constant="20" id="i8Y-Ta-j2t"/>
@@ -221,19 +200,25 @@
                             <constraint firstAttribute="trailingMargin" secondItem="KBk-ca-BMO" secondAttribute="trailing" constant="20" id="ufh-8A-1ln"/>
                             <constraint firstItem="KBk-ca-BMO" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="xRv-Ll-gMz"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="7UX-p4-Tg2"/>
-                            </mask>
-                        </variation>
                     </view>
+                    <navigationItem key="navigationItem" id="ddN-kG-JEF">
+                        <barButtonItem key="leftBarButtonItem" systemItem="action" id="eTI-5h-frM" userLabel="Share Button">
+                            <connections>
+                                <action selector="shareMeme:" destination="BYZ-38-t0r" id="ZNX-nb-rhd"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="ejj-rW-E6Z" userLabel="Cancel Button">
+                            <connections>
+                                <action selector="cancelEdit:" destination="BYZ-38-t0r" id="g9q-zu-fLm"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <nil key="simulatedStatusBarMetrics"/>
                     <connections>
                         <outlet property="bottomMemeText" destination="VTn-sN-6En" id="qVu-VW-ybF"/>
                         <outlet property="cameraButton" destination="OhC-7c-PUg" id="E2F-ui-iGl"/>
                         <outlet property="cancelEditButton" destination="ejj-rW-E6Z" id="CpJ-bl-E1F"/>
                         <outlet property="imageView" destination="ZCK-ph-L6J" id="taY-6d-TFv"/>
-                        <outlet property="navBar" destination="EeH-Zj-8RV" id="NxL-vP-h3D"/>
                         <outlet property="shareButton" destination="eTI-5h-frM" id="6Gs-g1-CuU"/>
                         <outlet property="toolbar" destination="rLr-yo-4tg" id="d7F-9W-8qZ"/>
                         <outlet property="topMemeText" destination="KBk-ca-BMO" id="Aha-5c-ujU"/>
@@ -241,7 +226,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="432" y="431"/>
+            <point key="canvasLocation" x="-375" y="-307"/>
         </scene>
         <!--Memes Collection View Controller-->
         <scene sceneID="vEa-HJ-7nP">
@@ -264,8 +249,8 @@
                                     <rect key="frame" x="0.0" y="0.0" width="112" height="99"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Zsx-LN-qUW">
-                                            <rect key="frame" x="-0.5" y="0.5" width="112" height="99"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zsx-LN-qUW">
+                                            <rect key="frame" x="-1" y="1" width="113" height="99"/>
                                         </imageView>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -290,6 +275,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zrP-OG-w1e" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-458" y="1216"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="C35-K5-9Ox">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="gKD-yn-Lni" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="TR6-od-Tx8">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="qyb-JO-Rcc"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="75B-Bb-UjG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1187" y="-307"/>
         </scene>
     </scenes>
     <resources>
