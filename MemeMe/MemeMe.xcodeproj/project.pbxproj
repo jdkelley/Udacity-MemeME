@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9619ED371CBD779F00BEDC65 /* TODO.txt in Resources */ = {isa = PBXBuildFile; fileRef = 9619ED361CBD779F00BEDC65 /* TODO.txt */; };
 		9619ED391CBD7CF300BEDC65 /* MemesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9619ED381CBD7CF300BEDC65 /* MemesCollectionViewController.swift */; };
 		9619ED3B1CBD7D0600BEDC65 /* MemesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9619ED3A1CBD7D0600BEDC65 /* MemesTableViewController.swift */; };
 		9619ED431CBE791F00BEDC65 /* MemeDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9619ED421CBE791F00BEDC65 /* MemeDataSource.swift */; };
@@ -46,7 +45,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		9619ED361CBD779F00BEDC65 /* TODO.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TODO.txt; sourceTree = "<group>"; };
 		9619ED381CBD7CF300BEDC65 /* MemesCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemesCollectionViewController.swift; sourceTree = "<group>"; };
 		9619ED3A1CBD7D0600BEDC65 /* MemesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemesTableViewController.swift; sourceTree = "<group>"; };
 		9619ED421CBE791F00BEDC65 /* MemeDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemeDataSource.swift; sourceTree = "<group>"; };
@@ -125,7 +123,6 @@
 				96C96B2F1CB7E0A3007AD4A9 /* Controller */,
 				96C96B2E1CB7E09F007AD4A9 /* View */,
 				96C96B2D1CB7E080007AD4A9 /* Model */,
-				9619ED361CBD779F00BEDC65 /* TODO.txt */,
 			);
 			path = MemeMe;
 			sourceTree = "<group>";
@@ -297,7 +294,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9619ED371CBD779F00BEDC65 /* TODO.txt in Resources */,
 				963ACAA81CAB5C3A00FCD0EF /* LaunchScreen.storyboard in Resources */,
 				963ACAA51CAB5C3A00FCD0EF /* Assets.xcassets in Resources */,
 				963ACAA31CAB5C3A00FCD0EF /* Main.storyboard in Resources */,

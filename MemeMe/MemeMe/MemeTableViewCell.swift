@@ -10,19 +10,15 @@ import UIKit
 
 class MemeTableViewCell: UITableViewCell {
     
+    // Labels
     @IBOutlet weak var topText: UILabel!
     @IBOutlet weak var bottomText: UILabel!
-
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
+    
+    // Image View
+    @IBOutlet weak var memeView: UIImageView!
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        imageView?.frame.size = CGSizeMake(100, 80)
+        memeView.frame.size = CGSizeMake(100, 80)
     }
-    
-
 }

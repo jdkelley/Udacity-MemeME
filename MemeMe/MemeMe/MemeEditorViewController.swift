@@ -33,8 +33,6 @@ class MemeEditorViewController: PushUpKeyboardViewController {
     
     @IBOutlet weak var cameraButton: UIBarButtonItem!
     
-    @IBOutlet weak var navbar: UINavigationItem!
-    
     // bar
     @IBOutlet weak var toolbar: UIToolbar!
     

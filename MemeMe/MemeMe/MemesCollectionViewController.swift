@@ -36,7 +36,13 @@ extension MemesCollectionViewController : UICollectionViewDelegateFlowLayout{
     
     private func setupCollectionFlow(size: CGSize) {
         
-        // TODO: User both width and height
+        // This is to fix a bug.
+        // Sometimes when on tableview and turn landscape
+        // and haven't visited collection view yet, flowLayout
+        // will still be nil for some reason. This guard statement fixes it
+        guard flowLayout != nil else {
+            return
+        }
         
         let space: CGFloat = 3.0
         let dimension = (min(size.width,size.width) - (2 * space)) / 3.0

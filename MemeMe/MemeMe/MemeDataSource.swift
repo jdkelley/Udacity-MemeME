@@ -32,13 +32,14 @@ class MemeDataSource : NSObject {
 extension MemeDataSource : UITableViewDataSource {
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCellWithIdentifier(ReuseIdentifier.TableViewCell) else {
+        guard let cell = tableView.dequeueReusableCellWithIdentifier(ReuseIdentifier.TableViewCell) as? MemeTableViewCell else {
             return UITableViewCell()
         }
         let meme = memes[indexPath.row]
         
-        cell.imageView?.image = meme.memedImage
-        cell.textLabel?.text = meme.topText + "..." + meme.bottomText
+        cell.memeView.image = meme.image
+        cell.topText.text = meme.topText
+        cell.bottomText.text = meme.bottomText
         
         return cell
     }

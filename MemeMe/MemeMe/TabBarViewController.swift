@@ -10,13 +10,17 @@ import UIKit
 
 class TabBarViewController: UITabBarController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        if MemeDataSource.sharedInstance.memes.count < 1 {
-            newMeme(self)
-        }
-    }
+    /*
+     * Note to self: uncomment this to activate the more desirable user experience of going straight to the editor when there are no
+     * memes yet saved.
+     */
+//    override func viewDidLoad() {
+//        super.viewDidLoad()
+//        
+//        if MemeDataSource.sharedInstance.memes.count < 1 {
+//            newMeme(self)
+//        }
+//    }
 
     @IBAction func newMeme(sender: AnyObject) {
         if let editor = storyboard?.instantiateViewControllerWithIdentifier(Storyboard.ID.MemeEditorViewController) as? MemeEditorViewController {
