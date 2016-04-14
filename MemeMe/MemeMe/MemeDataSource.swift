@@ -24,10 +24,7 @@ class MemeDataSource : NSObject {
     
     func saveMeme(meme: Meme) {
         memes.append(meme)
-        print("Now \(memes.count) items in the shared data source")
     }
-    
-    
 }
 
 // MARK: - TableView Protocol Conformance
@@ -36,7 +33,6 @@ extension MemeDataSource : UITableViewDataSource {
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCellWithIdentifier(ReuseIdentifier.TableViewCell) else {
-            print("I'm stuck here  1")
             return UITableViewCell()
         }
         let meme = memes[indexPath.row]
@@ -62,7 +58,7 @@ extension MemeDataSource : UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(ReuseIdentifier.CollectionViewCell, forIndexPath: indexPath) as! MemeCollectionViewCell
         let meme = memes[indexPath.row]
         
-        cell.image = UIImageView(image: meme.memedImage)
+        cell.image.image = meme.memedImage
         
         return cell
     }

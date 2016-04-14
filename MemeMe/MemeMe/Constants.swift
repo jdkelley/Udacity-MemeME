@@ -35,3 +35,7 @@ struct Storyboard {
         
     }
 }
+
+struct ActionSelectors {
+    static let EditSelected = #selector(DisplayMemeViewController.editSelected)
+}

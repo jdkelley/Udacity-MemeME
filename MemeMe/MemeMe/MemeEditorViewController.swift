@@ -84,6 +84,7 @@ class MemeEditorViewController: PushUpKeyboardViewController {
     @IBAction func cancelEdit(sender: AnyObject) {
         setInitialUIState()
         dismissViewControllerAnimated(true, completion: nil)
+        
     }
     
     // MARK: - Custom Methods
@@ -97,13 +98,10 @@ class MemeEditorViewController: PushUpKeyboardViewController {
         activityVC.completionWithItemsHandler = { activity, success, items, error in
             if success {
                 MemeDataSource.sharedInstance.saveMeme(meme)
-                self.setShareUI()
-                self.dismissViewControllerAnimated(true, completion: nil)
+                self.dismissViewControllerAnimated(true, completion:  nil)
             }
         }
-        
         self.presentViewController(activityVC, animated: true, completion: nil)
-        
     }
     
     /**
@@ -140,14 +138,14 @@ extension MemeEditorViewController {
     private func setInitialUIState() {
         cameraButton.enabled = UIImagePickerController.isSourceTypeAvailable(.Camera)
         setupTextFields()
-        imageView.image = nil
+        imageView.image = meme?.image
     }
 
     /// Set up the meme textfields to their initial state
     private func setupTextFields() {
         // set default text
-        topMemeText.text = DefaultText.TopTextFieldText
-        bottomMemeText.text = DefaultText.BottomTextFieldText
+        topMemeText.text = meme?.topText ?? DefaultText.TopTextFieldText
+        bottomMemeText.text = meme?.bottomText ?? DefaultText.BottomTextFieldText
         
         // set textfield attributes
         setTextFieldAttributes(topMemeText, bottomMemeText)

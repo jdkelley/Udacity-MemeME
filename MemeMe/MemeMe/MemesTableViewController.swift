@@ -34,8 +34,9 @@ class MemesTableViewController: UIViewController {
 extension MemesTableViewController : UITableViewDelegate {
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let vc = storyboard?.instantiateViewControllerWithIdentifier(Storyboard.ID.DisplayMemeViewController) as! DisplayMemeViewController
-        vc.imageView.image = memes[indexPath.row].memedImage
-        navigationController?.pushViewController(vc, animated: true)
+        if let vc = storyboard?.instantiateViewControllerWithIdentifier(Storyboard.ID.DisplayMemeViewController) as? DisplayMemeViewController {
+            vc.setMeme(memes[indexPath.row])
+            navigationController?.pushViewController(vc, animated: true)
+        }
     }
 }
