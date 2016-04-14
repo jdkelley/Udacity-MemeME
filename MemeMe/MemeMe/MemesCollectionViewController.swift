@@ -24,6 +24,11 @@ class MemesCollectionViewController: UICollectionViewController {
         setupCollectionFlow()
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        collectionView?.reloadData()
+    }
+    
     private func setupCollectionFlow() {
         
         // TODO: User both width and height

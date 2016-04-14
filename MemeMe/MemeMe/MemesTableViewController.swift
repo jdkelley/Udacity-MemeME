@@ -22,6 +22,11 @@ class MemesTableViewController: UIViewController {
         tableView.dataSource = MemeDataSource.sharedInstance
 
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
+    }
 }
 
 // MARK: - UITableViewDelegate

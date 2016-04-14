@@ -83,6 +83,7 @@ class MemeEditorViewController: PushUpKeyboardViewController {
     
     @IBAction func cancelEdit(sender: AnyObject) {
         setInitialUIState()
+        dismissViewControllerAnimated(true, completion: nil)
     }
     
     // MARK: - Custom Methods
@@ -91,12 +92,13 @@ class MemeEditorViewController: PushUpKeyboardViewController {
     /// - parameter meme: the meme to share
     func shareNewMeme(meme: Meme) {
         
-        let activityVC = UIActivityViewController(activityItems: [meme.image], applicationActivities: nil)
+        let activityVC = UIActivityViewController(activityItems: [meme.memedImage], applicationActivities: nil)
         
         activityVC.completionWithItemsHandler = { activity, success, items, error in
             if success {
                 MemeDataSource.sharedInstance.saveMeme(meme)
                 self.setShareUI()
+                self.dismissViewControllerAnimated(true, completion: nil)
             }
         }
         
@@ -130,7 +132,7 @@ extension MemeEditorViewController {
     
     // MARK: SETUP
     
-    func setShareUI() {
+    private func setShareUI() {
         shareButton.enabled = (imageView.image != nil) // Enable Share Button?
     }
     
@@ -156,10 +158,10 @@ extension MemeEditorViewController {
     private func setTextFieldAttributes(textfields : UITextField ... ) {
         // textfield attributes
         let memeMeTextAttributes = [
-            NSStrokeColorAttributeName : UIColor.blackColor()/* TODO: Fill in Appropriate UIColor */,
-            NSForegroundColorAttributeName : UIColor.whiteColor()/* TODO: Fill in appropriate UIColor */,
+            NSStrokeColorAttributeName : UIColor.blackColor(),
+            NSForegroundColorAttributeName : UIColor.whiteColor(),
             NSFontAttributeName : UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
-            NSStrokeWidthAttributeName : 0.0/* TODO: Fill in appropriate float */
+            NSStrokeWidthAttributeName : -2.0
         ]
     
         for textfield in textfields {

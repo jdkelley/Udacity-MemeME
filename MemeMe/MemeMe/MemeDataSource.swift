@@ -24,6 +24,7 @@ class MemeDataSource : NSObject {
     
     func saveMeme(meme: Meme) {
         memes.append(meme)
+        print("Now \(memes.count) items in the shared data source")
     }
     
     
@@ -34,7 +35,16 @@ class MemeDataSource : NSObject {
 extension MemeDataSource : UITableViewDataSource {
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        guard let cell = tableView.dequeueReusableCellWithIdentifier(ReuseIdentifier.TableViewCell) else {
+            print("I'm stuck here  1")
+            return UITableViewCell()
+        }
+        let meme = memes[indexPath.row]
+        
+        cell.imageView?.image = meme.memedImage
+        cell.textLabel?.text = meme.topText + "..." + meme.bottomText
+        
+        return cell
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
