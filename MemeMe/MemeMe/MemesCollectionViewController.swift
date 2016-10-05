@@ -24,7 +24,7 @@ class MemesCollectionViewController: UICollectionViewController {
         setupCollectionFlow(view.frame.size)
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         collectionView?.reloadData()
     }
@@ -34,7 +34,7 @@ class MemesCollectionViewController: UICollectionViewController {
 
 extension MemesCollectionViewController : UICollectionViewDelegateFlowLayout{
     
-    private func setupCollectionFlow(size: CGSize) {
+    fileprivate func setupCollectionFlow(_ size: CGSize) {
         
         // This is to fix a bug.
         // Sometimes when on tableview and turn landscape
@@ -49,11 +49,11 @@ extension MemesCollectionViewController : UICollectionViewDelegateFlowLayout{
         
         flowLayout.minimumInteritemSpacing = space
         flowLayout.minimumLineSpacing = space
-        flowLayout.itemSize = CGSizeMake(dimension, dimension)
+        flowLayout.itemSize = CGSize(width: dimension, height: dimension)
         
     }
     
-    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         setupCollectionFlow(size)
     }
 }
@@ -62,9 +62,9 @@ extension MemesCollectionViewController : UICollectionViewDelegateFlowLayout{
 
 extension MemesCollectionViewController {
 
-    override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        if let vc = storyboard?.instantiateViewControllerWithIdentifier(Storyboard.ID.DisplayMemeViewController) as? DisplayMemeViewController {
-            vc.setMeme(memes[indexPath.row])
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let vc = storyboard?.instantiateViewController(withIdentifier: Storyboard.ID.DisplayMemeViewController) as? DisplayMemeViewController {
+            vc.setMeme(memes[(indexPath as NSIndexPath).row])
             navigationController?.pushViewController(vc, animated: true)
         }
     }

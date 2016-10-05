@@ -14,7 +14,7 @@ class MemeDataSource : NSObject {
     
     static let sharedInstance = MemeDataSource()
     
-    private override init() {
+    fileprivate override init() {
         super.init()
     }
     
@@ -22,7 +22,7 @@ class MemeDataSource : NSObject {
     
     var memes = [Meme]()
     
-    func saveMeme(meme: Meme) {
+    func saveMeme(_ meme: Meme) {
         memes.append(meme)
     }
 }
@@ -31,11 +31,11 @@ class MemeDataSource : NSObject {
 
 extension MemeDataSource : UITableViewDataSource {
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCellWithIdentifier(ReuseIdentifier.TableViewCell) as? MemeTableViewCell else {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: ReuseIdentifier.TableViewCell) as? MemeTableViewCell else {
             return UITableViewCell()
         }
-        let meme = memes[indexPath.row]
+        let meme = memes[(indexPath as NSIndexPath).row]
         
         cell.memeView.image = meme.image
         cell.topText.text = meme.topText
@@ -44,20 +44,20 @@ extension MemeDataSource : UITableViewDataSource {
         return cell
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return memes.count
     }
     
     // MARK: Swipe to delete
     
-    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
     
-    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            memes.removeAtIndex(indexPath.row)
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            memes.remove(at: (indexPath as NSIndexPath).row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
             
         }
     }
@@ -67,17 +67,17 @@ extension MemeDataSource : UITableViewDataSource {
 
 extension MemeDataSource : UICollectionViewDataSource {
     
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(ReuseIdentifier.CollectionViewCell, forIndexPath: indexPath) as! MemeCollectionViewCell
-        let meme = memes[indexPath.row]
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ReuseIdentifier.CollectionViewCell, for: indexPath) as! MemeCollectionViewCell
+        let meme = memes[(indexPath as NSIndexPath).row]
         
         cell.image.image = meme.memedImage
         
         return cell
     }
     
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return memes.count
     }
 }

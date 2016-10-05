@@ -22,7 +22,7 @@ class MemesTableViewController: UIViewController {
         tableView.dataSource = MemeDataSource.sharedInstance
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.reloadData()
     }
@@ -32,14 +32,14 @@ class MemesTableViewController: UIViewController {
 
 extension MemesTableViewController : UITableViewDelegate {
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if let vc = storyboard?.instantiateViewControllerWithIdentifier(Storyboard.ID.DisplayMemeViewController) as? DisplayMemeViewController {
-            vc.setMeme(memes[indexPath.row])
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let vc = storyboard?.instantiateViewController(withIdentifier: Storyboard.ID.DisplayMemeViewController) as? DisplayMemeViewController {
+            vc.setMeme(memes[(indexPath as NSIndexPath).row])
             navigationController?.pushViewController(vc, animated: true)
         }
     }
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
     }
 }

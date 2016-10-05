@@ -19,6 +19,6 @@ class MemeTableViewCell: UITableViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        memeView.frame.size = CGSizeMake(100, 80)
+        memeView.frame.size = CGSize(width: 100, height: 80)
     }
 }

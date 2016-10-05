@@ -12,25 +12,25 @@ class DisplayMemeViewController: UIViewController {
     
     @IBOutlet weak var imageView: UIImageView!
     
-    private var meme: Meme?
+    fileprivate var meme: Meme?
     
-    func setMeme(meme: Meme) {
+    func setMeme(_ meme: Meme) {
         self.meme = meme
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Edit", style: .Plain, target: self, action: ActionSelectors.EditSelected)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: ActionSelectors.EditSelected)
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         imageView.image = meme?.memedImage
     }
     
     func editSelected() {
-        if let editor = storyboard?.instantiateViewControllerWithIdentifier(Storyboard.ID.MemeEditorViewController) as? MemeEditorViewController {
+        if let editor = storyboard?.instantiateViewController(withIdentifier: Storyboard.ID.MemeEditorViewController) as? MemeEditorViewController {
             editor.meme = meme
             navigationController?.pushViewController(editor, animated: true)
         }

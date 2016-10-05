@@ -56,50 +56,50 @@ class MemeEditorViewController: PushUpKeyboardViewController {
         setInitialUIState()
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setShareUI()
     }
     
-    override func prefersStatusBarHidden() -> Bool {
+    override var prefersStatusBarHidden : Bool {
         return true
     }
     
     // MARK: - Actions
     
-    @IBAction func pickImageFromCamera(sender: AnyObject) {
-        camera.pick(.Camera)
+    @IBAction func pickImageFromCamera(_ sender: AnyObject) {
+        camera.pick(.camera)
     }
     
-    @IBAction func pickImageFromAlbum(sender: AnyObject) {
-        camera.pick(.PhotoLibrary)
+    @IBAction func pickImageFromAlbum(_ sender: AnyObject) {
+        camera.pick(.photoLibrary)
     }
     
-    @IBAction func shareMeme(sender: AnyObject) {
+    @IBAction func shareMeme(_ sender: AnyObject) {
         meme = Meme(topText: topMemeText.text ?? "", bottomText: bottomMemeText.text ?? "", image: imageView.image!, memedImage: generateMemedImage())
         shareNewMeme(meme!)
     }
     
-    @IBAction func cancelEdit(sender: AnyObject) {
+    @IBAction func cancelEdit(_ sender: AnyObject) {
         setInitialUIState()
-        navigationController?.popToRootViewControllerAnimated(true)
+        navigationController?.popToRootViewController(animated: true)
     }
     
     // MARK: - Custom Methods
     
     /// Share the meme image passed in via Apple's Native social share view controller
     /// - parameter meme: the meme to share
-    func shareNewMeme(meme: Meme) {
+    func shareNewMeme(_ meme: Meme) {
         
         let activityVC = UIActivityViewController(activityItems: [meme.memedImage], applicationActivities: nil)
         
         activityVC.completionWithItemsHandler = { activity, success, items, error in
             if success {
                 MemeDataSource.sharedInstance.saveMeme(meme)
-                self.navigationController?.popToRootViewControllerAnimated(true)
+                self.navigationController?.popToRootViewController(animated: true)
             }
         }
-        self.presentViewController(activityVC, animated: true, completion: nil)
+        self.present(activityVC, animated: true, completion: nil)
     }
     
     /**
@@ -113,8 +113,8 @@ class MemeEditorViewController: PushUpKeyboardViewController {
         
         // render view to an image
         UIGraphicsBeginImageContext(imageView.frame.size)
-        view.drawViewHierarchyInRect(imageView.frame, afterScreenUpdates: true)
-        let memedImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()
+        view.drawHierarchy(in: imageView.frame, afterScreenUpdates: true)
+        let memedImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
         
         // Show toolbar and navbar
@@ -126,19 +126,19 @@ class MemeEditorViewController: PushUpKeyboardViewController {
 // MARK: - UI : Private because only this View Controller should be able to edit its views
 extension MemeEditorViewController {
     
-    private func setShareUI() {
-        shareButton.enabled = (imageView.image != nil) // Enable Share Button?
+    fileprivate func setShareUI() {
+        shareButton.isEnabled = (imageView.image != nil) // Enable Share Button?
     }
     
     /// Set the initial UIState of the MemeEditor Screen.
-    private func setInitialUIState() {
-        cameraButton.enabled = UIImagePickerController.isSourceTypeAvailable(.Camera)
+    fileprivate func setInitialUIState() {
+        cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
         setupTextFields()
         imageView.image = meme?.image
     }
 
     /// Set up the meme textfields to their initial state
-    private func setupTextFields() {
+    fileprivate func setupTextFields() {
         // set default text
         topMemeText.text = meme?.topText ?? DefaultText.TopTextFieldText
         bottomMemeText.text = meme?.bottomText ?? DefaultText.BottomTextFieldText
@@ -149,24 +149,24 @@ extension MemeEditorViewController {
     
     /// Takes a list of textfields and sets the attributes on them for memes
     /// - parameter textfields: a list of textfields
-    private func setTextFieldAttributes(textfields : UITextField ... ) {
+    fileprivate func setTextFieldAttributes(_ textfields : UITextField ... ) {
         // textfield attributes
         let memeMeTextAttributes = [
-            NSStrokeColorAttributeName : UIColor.blackColor(),
-            NSForegroundColorAttributeName : UIColor.whiteColor(),
+            NSStrokeColorAttributeName : UIColor.black,
+            NSForegroundColorAttributeName : UIColor.white,
             NSFontAttributeName : UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
             NSStrokeWidthAttributeName : -2.0
-        ]
+        ] as [String : Any]
     
         for textfield in textfields {
             textfield.defaultTextAttributes = memeMeTextAttributes
-            textfield.textAlignment = NSTextAlignment.Center
+            textfield.textAlignment = NSTextAlignment.center
         }
     }
     
     /// This methods sets the toolbars as visible or not based on the parameter `visible`
     /// - parameter visible: Set the toolbars visible?
-    private func setToolBarsVisible(visible: Bool) {
+    fileprivate func setToolBarsVisible(_ visible: Bool) {
         let transparent: CGFloat = visible ? 1.0 : 0.0
         toolbar.alpha = transparent
         navigationController?.navigationBar.alpha = transparent

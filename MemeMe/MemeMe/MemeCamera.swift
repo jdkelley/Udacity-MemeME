@@ -13,23 +13,23 @@ class MemeCamera : UIViewController, UIImagePickerControllerDelegate, UINavigati
     var imageView: UIImageView?
     
     /// Setup the Camera (which is a VC) by adding it as a child under the presenting VC.
-    func setupWith(vc: UIViewController) {
+    func setupWith(_ vc: UIViewController) {
         vc.addChildViewController(self)
     }
     
     /// Pick a picture from `source`.
-    func pick(source: UIImagePickerControllerSourceType) {
+    func pick(_ source: UIImagePickerControllerSourceType) {
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
         imagePicker.sourceType = source
-        presentViewController(imagePicker, animated: true, completion: nil)
+        present(imagePicker, animated: true, completion: nil)
     }
     
     /// UIImagePickerControllerDelegate delegate method.
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             imageView?.image = image
         }
-        dismissViewControllerAnimated(true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
 }
